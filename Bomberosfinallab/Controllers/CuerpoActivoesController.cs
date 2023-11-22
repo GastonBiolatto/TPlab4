@@ -118,6 +118,16 @@ namespace Bomberosfinallab.Controllers
             {
                 try
                 {
+                    string wwwRootPath = _HostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(cuerpoActivo.ImageFile.FileName);
+                    string extension = Path.GetExtension(cuerpoActivo.ImageFile.FileName);
+                    cuerpoActivo.ImagemBomber = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/image/", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await cuerpoActivo.ImageFile.CopyToAsync(fileStream);
+                    }
+
                     _context.Update(cuerpoActivo);
                     await _context.SaveChangesAsync();
                 }
