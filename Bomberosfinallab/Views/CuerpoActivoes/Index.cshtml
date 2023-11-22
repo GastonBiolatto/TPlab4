@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Bomberosfinallab.Models.CuerpoActivo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="p-3 mb-2 text-white ">
+                <h1 class="text-bg-dark">Personal</h1>
+                <a asp-action="Create"><i class="fa-solid fa-square-plus"></i> Añadir bombero</a>
+            </div>
+        </div>
+        <div class="col-md-4 text-end">
+            <div class="p-3 mb-2 text-white ">
+                <form asp-controller="CuerpoActivoes" asp-action="exportar" method="post">
+                    <button type="submit" class="btn btn-success"><i class="fa-regular fa-file-excel"></i>Exportar </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table colortabla">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DNI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departamento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemBomber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DNI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamento.Nombre)
+            </td>
+            <td>
+                <img src="~/image/@item.ImagemBomber"
+                         class="rounded-start"
+                         height="150" width="150"
+                         asp-append-version="true" />
+                <br>
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

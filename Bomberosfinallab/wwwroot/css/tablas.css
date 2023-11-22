@@ -1,0 +1,23 @@
+﻿.colortabla {
+    background-color: rgba(45, 10, 0, 0.9);
+}
+
+th{
+    color: blanchedalmond;
+}
+
+td {
+    color: antiquewhite;
+}
+btncreate {
+    background-color: red; 
+}
+btndelete{
+
+}
+btnedit{
+
+}
+btndetails{
+
+}

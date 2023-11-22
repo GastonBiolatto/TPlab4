@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Bomberosfinallab.Models.Asistencia>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Asistencia</h1>
+
+<a asp-action="Create"><i class="fa-solid fa-square-plus"></i> Añadir asistencia</a>
+<table class="table colortabla">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContAsistencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuerpoActivo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContAsistencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuerpoActivo.Nro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

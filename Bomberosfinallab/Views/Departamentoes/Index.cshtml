@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Bomberosfinallab.Models.Departamento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Departamentos</h1>
+
+<a asp-action="Create"><i class="fa-solid fa-square-plus"></i> Añadir Departamento</a>
+<table class="table colortabla">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
